@@ -11,6 +11,16 @@ export function App() {
                     </div>
                     <div className = "right-header-side">
                         <div>Britain flag here</div>
+                        <div className = "hidden">
+                            <div>
+                                <p>Britain flag here</p>
+                                <p>English</p>
+                            </div>
+                            <div>
+                                <p>Ukranian flag here</p>
+                                <p>Українська</p>
+                            </div>
+                        </div>
                         <a href="login" id = "signInButton">Sign In</a>
                         <a href="register" id = "signUpButton">Sign Up</a>
                         <p>userIconhere</p>
