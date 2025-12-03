@@ -1,4 +1,4 @@
-import styles from "./post.module.css"
+import styles from "./postCard.module.css"
 
 
 export interface Tag {

@@ -1,4 +1,4 @@
-import { PostCard } from "./Post"
+import { PostCard } from "../post-card/PostCard"
 import styles from "./postList.module.css"
 
 // copypasted from json file of backend

@@ -1,14 +1,16 @@
-import { Header, Footer } from "./TemplateComponents"
+import { Header } from "./components/header/Header"
+import { Footer } from "./components/footer/Footer"
+import { Main } from "./components/main/Main"
 import styles from "./test.module.css"
-import { PostList } from "./PostList"
+import { PostList } from "./components/post-list/PostList"
 
 
 export function ThePage(){
     return <div className = {styles.notExistingClassOrSomethingIReallyDontKnow}>
                 <Header></Header>
-                <main>
+                <Main>
                     <PostList></PostList>
-                </main>
+                </Main>
                 <Footer></Footer>
             </div>
 }

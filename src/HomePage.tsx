@@ -1,11 +1,13 @@
-import { Header, Footer } from "./TemplateComponents"
+import { Header } from "./components/header/Header"
+import { Footer } from "./components/footer/Footer"
+import { Main } from "./components/main/Main"
 import styles from "./home.module.css"
 
 
 export function HomePage(){
     return <div>
                 <Header></Header>
-                <main>
+                <Main>
                     <div className={styles.mainData}>
                         <h1>Project's Data</h1>
                         <div className={`${styles.dataBlock} ${styles.introductionDataBlock}`} id="introductionData">
@@ -34,7 +36,7 @@ export function HomePage(){
                             </div>
                         </div>
                     </div>
-                </main>
+                </Main>
                 <Footer></Footer>
             </div>
 }
