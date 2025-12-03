@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Inria Sans";
+    box-sizing: border-box;
+    color: white;
+}
+
+.hidden{
+    display: none !important;
+}
+
+header{
+    width: 100vw;
+    height: fit-content;
+    justify-content: space-between;
+    padding: 10px 30px;
+    background-color: #505050;
+    display: flex;
+    height: 80px;
+}
+
+.leftHeaderSide{
+    display: flex;
+    padding: 26px 0;
+    gap: 30px;
+    align-items: center;
+}
+
+.leftHeaderSide h1{
+    font-size: 40px;
+    color: white;
+}
+
+.leftHeaderSide div{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+}
+
+.leftHeaderSide div a{
+    color: white;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+.selectedLink{
+    font-weight: 700;
+}
+
+.leftHeaderSide div button{
+    text-align: center;
+    color: white;
+    background-color: #38A5FF;
+    border-radius: 5px;
+    font-size: 22px;
+    padding: 6px;
+    border-width: 0;
+}
+
+.leftHeaderSide div button:hover{
+    filter: brightness(105%);
+    cursor: pointer;
+}
+
+
+.rightHeaderSide{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px;
+    align-items: center;
+    padding: 26px 0px;
+}
+
+.rightHeaderSide h6{
+    width: 60px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 24px;
+}
+
+.loginButton{
+    padding: 5px 10px;
+    background-color: #007CC5;
+    border-radius: 5px;
+    color: white;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+.loginButton:hover{
+    filter: brightness(105%);
+}
+
+.registrationButton{
+    padding: 5px 10px;
+    background-color: #696969;
+    border-radius: 5px;
+    color: white;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+.registrationButton:hover{
+    filter: brightness(105%);
+}
+
+.userIcon{
+    width: 68px;
+    height: 68px;
+    font-size: 42px;
+    text-align: center;
+}
+
+
+
+footer{
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    padding: 15px 400px;
+    justify-content: space-between;
+    background-color: #1A1A1A;
+    position: absolute;
+    height: 55px;
+    bottom: 0;
+}
+
+footer p{
+    color: #959595;
+    font-size: 20px;
+    height: 34px;
+}
+
+.clickableFooterLink:hover{
+    filter: brightness(120%);
+    cursor: pointer;
+}

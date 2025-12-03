@@ -1,0 +1,12 @@
+#root{
+    overflow: hidden;
+}
+
+main{
+    overflow-y: scroll;
+    width: 100vw;
+    background-color: #282828;
+    height: calc(100vh - 135px);
+    display: flex;
+    justify-content: center;
+}

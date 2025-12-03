@@ -1,0 +1,55 @@
+#root{
+    overflow: hidden;
+}
+
+main{
+    overflow-y: scroll;
+    width: 100vw;
+    background-color: #282828;
+    height: calc(100vh - 135px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainData{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.dataBlock{
+    background-color: #666666;
+    padding: 15px;
+    border-radius: 20px;
+    gap: 20px;
+}
+
+.introductionDataBlock{
+    width: 960px;
+}
+
+.partData{
+    width: 460px;
+}
+
+.dataBlock h2{
+    font-size: 24px;
+}
+
+.dataBlock p{
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.allData{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+#homeLink{
+    font-weight: 700;
+}
