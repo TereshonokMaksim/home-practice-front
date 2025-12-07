@@ -1,71 +1,117 @@
+import { useEffect, useState } from "react"
 import { PostCard } from "../post-card/PostCard"
 import styles from "./postList.module.css"
 
-// copypasted from json file of backend
-const tags = [
-        {
-            "id": 1,
-            "name": "Rock"
-        },
-        {
-            "id": 2,
-            "name": "Ore"
-        },
-        {
-            "id": 3,
-            "name": "Copper"
-        },
-        {
-            "id": 4,
-            "name": "Iron"
-        }
-    ]
+import testTags from "./../../assets/testData/testDataTags.json"
+import testPosts from "./../../assets/testData/testDataPosts.json"
 
-const posts = [
-        {
-            "id": 1,
-            "name": "Argillite",
-            "description": "Sedimentary rock thats actually not just gravel or processed mollusks.",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Argillite.JPG",
-            "likes": 12, 
-            "tags": [tags[0]]
-        },
-        {
-            "id": 2,
-            "name": "Basalt",
-            "description": "Extrusive magmatic rock that is really famous. Its not very cool, but it has some ores.",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Basalt_12_%2848674276333%29.jpg/1920px-Basalt_12_%2848674276333%29.jpg",
-            "likes": 5, 
-            "tags": [tags[0]]
-        },
-        {
-            "id": 3,
-            "name": "Chalcopyrite",
-            "description": "Copper ore, thats quite easy to find. Very important for copper mining industry and forms nice crystals.",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Chalcopyrite-199453.jpg",
-            "likes": 48, 
-            "tags": [tags[1], tags[2]]
-        },
-        {
-            "id": 4,
-            "name": "Tennanite",
-            "description": "That is some strange copper ore, as sometimes it looks like crystals, sometimes like andesite.",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Tennantite2.jpg/1920px-Tennantite2.jpg",
-            "likes": 29, 
-            "tags": [tags[1], tags[2]]
-        },
-        {
-            "id": 5,
-            "name": "Limonite",
-            "description": "Even though its an iron ore, it is largely used as nickel deposits. Also, it is very yellow, you can use it to get yellow dye or smth.",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/LimoniteUSGOV.jpg",
-            "likes": 106, 
-            "tags": [tags[1], tags[3]]
-        }
-    ]
-const LIKE_OPTIONS = [["Less than 0", false], ["More than 0", true], ["More than 50", false], ["More than 100", false]]
+// copypasted from json file of backend
+
+interface Tag {
+    id: number
+    name: string
+}
+
+interface Post {
+    id: number
+    name: string
+    description: string
+    image: string
+    likes: number
+    tags: Tag[]
+}
+
+interface RawPost extends Omit<Post, "tags">{
+    tags: number[]
+}
+
+
+const tags: Tag[] = testTags
+const rawPosts: RawPost[] = testPosts
+const posts: Post[] = rawPosts.map(rawPost => {return {...rawPost, tags: tags.filter(tag => rawPost.tags.includes(tag.id))}})
+
+
+interface LikeOption {
+    name: string
+    defaultChecked: boolean
+    value: "<0" | number
+}
+
+const LIKE_OPTIONS: LikeOption[] = [
+    {
+        name: "Less than 0", 
+        defaultChecked: false,
+        value: "<0"
+    }, 
+    {
+        name: "More than 0", 
+        defaultChecked: true,
+        value: 0
+    }, 
+    {
+        name: "More than 50", 
+        defaultChecked: false,
+        value: 50
+    }, 
+    {
+        name: "More than 100", 
+        defaultChecked: false,
+        value: 100
+    }
+]
 
 export function PostList(){
+    const [postSearchValue, setPostSearchValue] = useState("")
+    const [tagSearchValue, setTagSearchValue] = useState("")
+    // If num, then it filters by the number or more, if "<0" than only those that has less than 0 likes (more dislikes)
+    const [likesFilter, setLikesFilter] = useState<number | "<0">(0)
+    const [tagFilter, setTagFilter] = useState<Tag[] | "All">("All")
+    const [filteredPosts, setFilteredPosts] = useState(posts)
+    const [filteredTags, setFilteredTags] = useState(tags.slice(0, 4))
+
+    function toggleTagFilter(tagId: Tag): void{
+        if (tagFilter === "All"){
+            setTagFilter([tagId])
+            return
+        }
+        if (tagFilter.includes(tagId)){
+            if (tagFilter.length === 1){
+                setTagFilter("All")
+                return
+            }
+            const newTagFilter = [...tagFilter]
+            newTagFilter.splice(newTagFilter.indexOf(tagId), 1)
+            setTagFilter(newTagFilter)
+            return
+        }
+        setTagFilter([...tagFilter, tagId])
+    }
+
+    useEffect(() => {
+        const nameAndLikeFiltered = posts.filter(post => {
+            if (post.name.includes(postSearchValue)){
+                if (likesFilter === "<0"){
+                    return post.likes < 0
+                }
+                return post.likes > likesFilter
+            }
+            return false
+        })
+        if (tagFilter === "All"){
+            setFilteredPosts(nameAndLikeFiltered)
+            return
+        }
+        const tagsFiltered = nameAndLikeFiltered.filter(post => {
+            return tagFilter.length === tagFilter.filter(tagToCheck => {return post.tags.includes(tagToCheck)}).length
+        })
+        setFilteredPosts(tagsFiltered)
+    }, [postSearchValue, likesFilter, tagFilter])
+
+    useEffect(() => {
+        setFilteredTags(tags.filter(tag => tag.name.includes(tagSearchValue)).slice(0, 4))
+    }, 
+    [tagSearchValue])
+
     return (
         <div className = {styles.postListBg}>
             <div className={styles.filters}>
@@ -73,30 +119,37 @@ export function PostList(){
                 <div className={styles.subFilterList}>
                     <h4>By Tags:</h4>
                     <div className={styles.filterOptions}>
-                    {tags.map(tag => {return (
-                        <div className={styles.filter} key = {tag.name as string}>
-                            <input type="checkbox" />
-                            <p>{tag.name}</p>
-                        </div>)})}
+                        <div className={`${styles.tagSearchBar} ${styles.searchBar}`}>
+                            <input placeholder = "Search..." onChange = {event => {setTagSearchValue(event.target.value)}} />
+                        </div>
+                    {filteredTags.length > 0 ? filteredTags.map(tag => {return (
+                        <label className={styles.filter} key = {tag.name as string}>
+                            <input type="checkbox" onChange = {event => {toggleTagFilter(tag)}} />
+                            {tag.name} ({filteredPosts.filter(post => post.tags.includes(tag)).length})
+                        </label>)}) : (
+                    <div className={styles.notFoundTag}>
+                        <p>Tags are not found :(</p>
+                    </div>
+                )}
                     </div>
                 </div>
                 <div className={styles.subFilterList}>
                     <h4>By Likes:</h4>
                     <div className={styles.filterOptions}>
                     {LIKE_OPTIONS.map(like => {return (
-                        <div className={styles.filter} key = {like[0] as string}>
-                            <input type="checkbox" defaultChecked = {like[1] as boolean} />
-                            <p>{like[0]}</p>
-                        </div>)})}  
+                        <label className={styles.filter} key = {like.name}>
+                            <input type="radio" name = "likeFilterInput" defaultChecked = {like.defaultChecked} onChange={event => {setLikesFilter(like.value)}} />
+                            {like.name}
+                        </label>)})}  
                     </div>
                 </div>
             </div>
             <div className = {styles.postList}>
                 <div className={styles.searchBar}>
-                    <p>Search...</p>
+                    <input placeholder = "Search..." onChange = {event => {setPostSearchValue(event.target.value)}} />
                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg" alt="Q" />
                 </div>
-                {posts.map(post => {
+                {filteredPosts.length > 0 ? filteredPosts.map(post => {
                     const processedDesc = post.description
                     return <PostCard
                         name = {post.name}
@@ -107,9 +160,13 @@ export function PostList(){
                         key = {post.id}
                         id = {post.id}
                     ></PostCard>
-                })}
+                }) : (
+                    <div className={styles.notFoundPost}>
+                        <p>Posts are not found :(</p>
+                        <p>Try changing filters or your search request.</p>
+                    </div>
+                )}
             </div>
-        <div className={styles.filterHelper}></div>
         </div>
     )
 }

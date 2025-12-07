@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "name": "Argillite",
+        "description": "Eyy, i found cool argillite rock while i was at beach! How rare are these? Im really curious!",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Argillite.JPG",
+        "likes": 12, 
+        "tags": [1]
+    },
+    {
+        "id": 2,
+        "name": "Basalt crushing",
+        "description": "Im in a process of making my all-rock experiment, and for that, i need dusts of... a lot of rocks. I had no problem with crushing sedimentary rocks like chalk or sandstone, but basalt is a troublemaker. Anybody knows, how to crush it at home?",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Basalt_12_%2848674276333%29.jpg/1920px-Basalt_12_%2848674276333%29.jpg",
+        "likes": 5, 
+        "tags": [1, 8]
+    },
+    {
+        "id": 3,
+        "name": "Home Copper: Chapter 3",
+        "description": "Chapter 3 of my home made copper adventure! Today, i finally found beatiful chunk of copper after a week of ordering ore and filtering it. On image is chunk of around 1-2kg i found, but there are a lot of not pretty ones.",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Chalcopyrite-199453.jpg",
+        "likes": 48, 
+        "tags": [2, 3, 8]
+    },
+    {
+        "id": 4,
+        "name": "Strange rock?",
+        "description": "Hey! While i was exploring some caves, i found this strange rock. I assumed that this is andesite, but it appears that it is not. Anybody has any idea what is this?",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Tennantite2.jpg/1920px-Tennantite2.jpg",
+        "likes": 29, 
+        "tags": [1, 2, 7]
+    },
+    {
+        "id": 5,
+        "name": "Limonite question",
+        "description": "I bought this big sample of limonite from shop that is near my street. Homever, im not very sure that this is Limonite and not random brick, how can i check?",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/2/2e/LimoniteUSGOV.jpg",
+        "likes": 106, 
+        "tags": [1, 4, 7]
+    },
+    {
+        "id": 6,
+        "name": "What is this?",
+        "description": "Hello, during exploration of my cellar, i found this crystal! Can somebody help me identify what crystal is this? I am really curious! My grandma loved collecting various gems and crystals, so this is not the first one i found. Homever, i can’t seem to understand which one is that, it seems like some corundum, but i am not sure...",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/5/51/Chalcopyrite-Quartz-Rhodochrosite-hbru-07c.jpg",
+        "likes": 101,
+        "tags": [5, 6, 7]
+    },
+    {
+        "id": 7,
+        "name": "How to process iron?",
+        "description": "So, i found this huge piece of Siderite while i was looking for some more gems for my collection. Personally, im not a fan of processing ore, but because i have wonderful possibility for it, i am curious, whether i can get some high purity iron from it. If anybody has recommendations on how to clear, purify or effectively break into smaller chunks, please answer!",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Harvard_Museum_of_Natural_History._Siderite._Gilman%2C_Eagle_Co.%2C_CO_%28DerHexer%29_2012-07-20.jpg/2560px-Harvard_Museum_of_Natural_History._Siderite._Gilman%2C_Eagle_Co.%2C_CO_%28DerHexer%29_2012-07-20.jpg",
+        "likes": 18,
+        "tags": [2, 4, 8]
+    }
+]

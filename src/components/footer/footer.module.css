@@ -3,18 +3,18 @@ footer{
     width: 100vw;
     display: flex;
     flex-direction: row;
-    padding: 15px 400px;
+    padding: 0px 400px;
     justify-content: space-between;
+    align-items: center;
     background-color: #1A1A1A;
     position: absolute;
-    height: 55px;
+    height: 40px;
     bottom: 0;
 }
 
 footer p{
     color: #959595;
-    font-size: 20px;
-    height: 34px;
+    font-size: 16px;
 }
 
 .clickableFooterLink:hover{

@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "name": "Rock"
+    },
+    {
+        "id": 2,
+        "name": "Ore"
+    },
+    {
+        "id": 3,
+        "name": "Copper"
+    },
+    {
+        "id": 4,
+        "name": "Iron"
+    },
+    {
+        "id": 5,
+        "name": "Crystal"
+    },
+    {
+        "id": 6,
+        "name": "Geology"
+    },
+    {
+        "id": 7,
+        "name": "Identifiyng"
+    },
+    {
+        "id": 8,
+        "name": "DIY project"
+    }
+]
