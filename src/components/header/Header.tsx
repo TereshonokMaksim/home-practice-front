@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./header.module.css";
 
 
@@ -6,8 +7,8 @@ export function Header(){
                 <div className={styles.leftHeaderSide}>
                     <h1>Remery</h1>
                     <div>
-                        <a href="home" id = "homeLink">Home</a>
-                        <a href="all_posts">All posts</a>
+                        <Link to = "/" id = "homeLink">Home</Link>
+                        <Link to = "/posts/" id = "allPostsLink">All posts</Link>
                         <button>Create Post</button>
                     </div>
                 </div>
